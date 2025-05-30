@@ -1,0 +1,651 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass amsart
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Implicit surface triagulations
+\begin_inset Newline newline
+\end_inset
+
+using the Gauss Map
+\end_layout
+
+\begin_layout Author
+Carlos Valero 
+\begin_inset Newline newline
+\end_inset
+
+Mathematics Department
+\begin_inset Newline newline
+\end_inset
+
+University of Guanajuato
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\RR}{\mathbb{R}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Introduction
+\end_layout
+
+\begin_layout Standard
+BLA
+\end_layout
+
+\begin_layout Section*
+Inverse Normal Map using Point Clouds
+\end_layout
+
+\begin_layout Standard
+An implicit surface 
+\begin_inset Formula $X$
+\end_inset
+
+ in 3-dimensional is a surface that can be defined as set of points 
+\begin_inset Formula $(x,y,z)\in\RR^{3}$
+\end_inset
+
+ that satisfy the equation
+\begin_inset Formula 
+\[
+f(x,y,z)=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f:\RR^{3}\rightarrow\RR$
+\end_inset
+
+ is a scalar valued function in the 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ variables.
+ For every point 
+\begin_inset Formula $(x,y,z)$
+\end_inset
+
+ in 
+\begin_inset Formula $X$
+\end_inset
+
+ the normal vector to the surface is given by
+\begin_inset Formula 
+\[
+N(x,y,z)=\nabla f(x,y,z)/\text{|\ensuremath{\nabla f(x,y,z)|}}.
+\]
+
+\end_inset
+
+Hence 
+\begin_inset Formula $n$
+\end_inset
+
+ defines a map, known as the Normal Map or the Gauss Map, of the form 
+\begin_inset Formula 
+\[
+N:X\rightarrow S^{2}
+\]
+
+\end_inset
+
+where the unit sphere 
+\begin_inset Formula $S²$
+\end_inset
+
+ is given by
+\begin_inset Formula 
+\[
+S^{2}=\{(n_{x},n_{y},n_{z})\in\RR^{3}|n_{x}^{2}+n_{y}^{2}+n_{z}^{2}=1\}.
+\]
+
+\end_inset
+
+We wish to map a regular triangulation of the sphere 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+ to a triangulation of 
+\begin_inset Formula $X$
+\end_inset
+
+ by 
+\begin_inset Quotes eld
+\end_inset
+
+inverting
+\begin_inset Quotes erd
+\end_inset
+
+ the normal map 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ The problem is that this map is not in general invertible.
+ In any case, we consider the inverse images on a triangles 
+\begin_inset Formula $T$
+\end_inset
+
+ in the triangulation of 
+\begin_inset Formula $S^{2}$
+\end_inset
+
+, i.e the sets of the form
+\begin_inset Formula 
+\[
+N^{-1}(T)=\{x\in X|n(p)\in T\},
+\]
+
+\end_inset
+
+We will see that the collections of these sets, obtained by varying 
+\begin_inset Formula $T$
+\end_inset
+
+ over all the triangles of the sphere, will allow us to construct a triangulatio
+n of 
+\begin_inset Formula $X$
+\end_inset
+
+ that has more triangles in zone of 
+\begin_inset Quotes eld
+\end_inset
+
+high curvature
+\begin_inset Quotes erd
+\end_inset
+
+ and less triangles in zones of 
+\begin_inset Quotes eld
+\end_inset
+
+low curvature
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Problem
+Given a triangle 
+\begin_inset Formula $T\subset S^{2}$
+\end_inset
+
+, how can we compute 
+\begin_inset Formula $N^{-1}(T)?$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+We give brute force approximate solution to the above problem using point
+ clouds as follows.
+ A triangle 
+\begin_inset Formula $T$
+\end_inset
+
+ of the sphere is determined by three vertices 
+\begin_inset Formula $n_{1},n_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $n_{3}$
+\end_inset
+
+ (which must be unit vectors).
+ The the triangle 
+\begin_inset Formula $T$
+\end_inset
+
+ as a set is the set of point 
+\begin_inset Formula $n$
+\end_inset
+
+ in 
+\begin_inset Formula $\RR^{3}$
+\end_inset
+
+ that satisfy the equations
+\begin_inset Formula 
+\begin{align*}
+n\cdot n & =1,\\
+n\cdot(n_{1}\times n_{2}) & \geq0,\\
+n\cdot(n_{2}\times n_{3}) & \geq0,\\
+n\cdot(n_{3}\times n_{1}) & \geq0.
+\end{align*}
+
+\end_inset
+
+Hence 
+\begin_inset Formula $N^{-1}(T)$
+\end_inset
+
+ is consists of the set of points 
+\begin_inset Formula $p\in\RR^{3}$
+\end_inset
+
+ that satisfy the formulas
+\begin_inset Formula 
+\[
+f(p)=0,
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\begin{align*}
+\nabla f(p)\cdot(n_{1}\times n_{2}) & \geq0,\\
+\nabla f(p)\cdot(n_{2}\times n_{3}) & \geq0,\\
+\nabla f(p)\cdot(n_{3}\times n_{1}) & \geq0.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We represent the surface 
+\begin_inset Formula $X=f^{-1}(0)$
+\end_inset
+
+ as a point cloud by first triangulating 
+\begin_inset Formula $X$
+\end_inset
+
+ (e.g.
+ using the marching cubes algorithm) and then obtain regularly sampled points
+ 
+\begin_inset Formula $\{p_{i}\}_{i=1}^{k}$
+\end_inset
+
+from it.
+\end_layout
+
+\begin_layout Enumerate
+From the previous step we can obtain the vectors 
+\begin_inset Formula 
+\[
+g_{i}=\nabla f(p_{i})
+\]
+
+\end_inset
+
+so that equations BLA becomes
+\begin_inset Formula 
+\begin{align*}
+g_{i}\cdot(n_{1}\times n_{2}) & \geq0,\\
+g_{i}\cdot(n_{2}\times n_{3}) & \geq0,\\
+g_{i}\cdot(n_{3}\times n_{1}) & \geq0.
+\end{align*}
+
+\end_inset
+
+If 
+\begin_inset Formula $\{i_{j}\}_{j=1}^{m}$
+\end_inset
+
+ are the indices for which the above equations hold the the points
+\begin_inset Formula 
+\[
+\{p_{i_{j}}\}_{j=1}^{m}
+\]
+
+\end_inset
+
+is a point cloud representing the solution to the desired equations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dense point cloud (half a million points) obtained as the inverse image
+ of the normal map on the torus.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The process just described above can encounter problems at the singular
+ points of the normal map (PICTURE AND EXPLAIN FOLDINGS), which are the
+ points at which the Gaussian Curvature 
+\begin_inset Formula $\kappa:X\rightarrow\RR$
+\end_inset
+
+ vanishes.
+ For and implicit surface we have that
+\begin_inset Formula 
+\[
+\kappa(p)=\frac{1}{|\nabla f(p)|^{2}}\det\left(W(p)\right),
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+W(p)=\left(\begin{array}{cc}
+w_{11}(p) & w_{12}(p)\\
+w_{21}(p) & w_{22}(p)
+\end{array}\right)\text{\,\,for\,\,}w_{ij}(p)=\left(\nabla^{2}f(p)T_{i}\right)\cdot T_{j}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $T_{1},T_{2}$
+\end_inset
+
+ any pair orthonormal vectors tangential to 
+\begin_inset Formula $X$
+\end_inset
+
+ at 
+\begin_inset Formula $p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Examples
+\end_layout
+
+\begin_layout Standard
+An advantage of using implicit surfaces (instead of parametric ones) is
+ that we can blend them to create complex geometries from simple ones.
+ For smooth functions 
+\begin_inset Formula $f_{1},f_{2}:\RR^{3}\rightarrow\RR$
+\end_inset
+
+, we can represent the smooth union of the surfaces 
+\begin_inset Formula $X=f^{-1}(0)$
+\end_inset
+
+and 
+\begin_inset Formula $Y=g^{-1}(0)$
+\end_inset
+
+ by the formula
+\begin_inset Formula 
+\[
+f_{k}(p)+g_{k}(p)-f_{k}(p)g_{k}(p)-1/2=0
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+f_{k}=H_{k}\circ f,g_{k}=H_{k}\circ g
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+H_{k}(s)=\frac{1}{1+\exp(-ks)}
+\]
+
+\end_inset
+
+is a scaled sigmoid function; the parameter 
+\begin_inset Formula $k$
+\end_inset
+
+ controls the how smooth is the surface obtained joining the 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ Observe that 
+\begin_inset Formula $H_{\infty}$
+\end_inset
+
+ is the Heaviside function
+\begin_inset Formula 
+\[
+H_{\infty}(s)=\begin{cases}
+0 & s<0\\
+1/2 & s=0\\
+1 & s>0
+\end{cases}
+\]
+
+\end_inset
+
+Similarly, the smooth intersection an difference of 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ can be represented by the equations 
+\begin_inset Formula 
+\[
+f_{k}(p)g_{k}(p)-1/2=0
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+f_{k}(p)(1-g_{k}(p))-1/2=0.
+\]
+
+\end_inset
+
+MAKE A FEW PICTURES!
+\end_layout
+
+\begin_layout Section*
+Alignment energy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E_{n}(x,y,z)=|\nabla f(x,y,z)\times n|^{2}+f(x,y,z)^{2}
+\]
+
+\end_inset
+
+Observe that 
+\begin_inset Formula $E(x,y,z)=0$
+\end_inset
+
+ exactly when 
+\begin_inset Formula $(x,y,z)$
+\end_inset
+
+ is in the surface 
+\begin_inset Formula $f(x,y,z)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla f(x,y,z)$
+\end_inset
+
+ is parallel to 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ This last conditions is equivalent to 
+\begin_inset Formula $g(x,y,z)=\pm n$
+\end_inset
+
+.
+ Numerically, we can solve the equation 
+\begin_inset Formula $E_{n}(x,y,z)=0$
+\end_inset
+
+ by minimizing 
+\begin_inset Formula $E_{n}$
+\end_inset
+
+.
+ This can be done by taking an initial condition 
+\begin_inset Formula $(x_{0,}y_{0},z_{0})$
+\end_inset
+
+ and applying gradient descent (or some other more sophisticated numerical
+ techique), In any case, if 
+\begin_inset Formula $(x_{0},y_{0},z_{0})$
+\end_inset
+
+ is so that 
+\begin_inset Formula $f(x_{0},y_{0},z_{0})$
+\end_inset
+
+ is small and 
+\begin_inset Formula $\nabla f(x_{0},y_{0},z_{0})$
+\end_inset
+
+ is close to parallel to 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla f(x_{0},y_{0},z_{0})\cdot n>0$
+\end_inset
+
+ we can expect that the minimization of 
+\begin_inset Formula $E_{0}$
+\end_inset
+
+ with such an initial condition will provide us with a point 
+\begin_inset Formula $(x,y,z)$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+f(x,y,z)=0\text{\,\,\,and\,\,\,}g(x,y,z)=n.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
